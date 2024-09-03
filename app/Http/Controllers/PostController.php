@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Traits\ImagesTrait;
+use App\Models\Likes;
 
 class PostController extends Controller
 {
@@ -41,4 +42,16 @@ class PostController extends Controller
         }
         return redirect()->route('posts.create');
     }
+
+    public function like($postId)
+{
+    $post = Post::find($postId);
+    $like = new Likes();
+    $like->user_id = auth()->id();
+    $like->post_id = $postId;
+    $like->save();
+    return redirect()->route('posts.create');
+}
+
+
 }

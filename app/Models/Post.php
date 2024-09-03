@@ -21,9 +21,13 @@ class Post extends Model
 
     public function likes(): HasMany
     {
-        return $this->hasMany(Like::class);
+        return $this->hasMany(Likes::class);
     }
     public function getImageAttribute($value){
         return asset('storage/images/' . $value);
+    }
+    public function likeCount()
+    {
+    return $this->likes()->count();
     }
 }

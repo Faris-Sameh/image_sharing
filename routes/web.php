@@ -16,6 +16,9 @@ Route::get("Delete/User/{id}",[UserController::class,"delete"])->name('delete');
 Route::get("loginform/User", [UserController::class,"loginform"])->name('login');
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 Route::post('Login/User', [UserController::class, 'login'])->name('login.submit');
+Route::get('profile/User/{id}', [UserController::class, 'profile'])->name('view.profile');
 Route::get('Posts/create', [PostController::class, 'create'])->name('posts.create');
 Route::post('Posts/Store', [PostController::class, 'store'])->name('posts.store');
 Route::post('delete/post/{id}', [PostController::class, 'destroy'])->name('delete.post');
+Route::post('like/post/{id}', [PostController::class, 'like'])->name('like.post');
+

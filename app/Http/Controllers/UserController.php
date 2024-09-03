@@ -58,4 +58,11 @@ class UserController extends Controller
         Auth::logout();
         return redirect()->route('create');
     }
+    public function profile($id)
+    {
+        $user = User::find($id);
+        $posts = $user->posts;
+        return view('User.profile', compact('user', 'posts'));
+    }
+    
 }
